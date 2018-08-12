@@ -2,8 +2,7 @@ package main
 
 import (
 	"fmt"
-	"awesomeProject/src/github.com/nekrasovdmytro/goserver"
-
+	"goserver-usage/src/github.com/nekrasovdmytro/goserver"
 	"net/http"
 )
 
