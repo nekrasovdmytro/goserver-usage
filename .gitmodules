@@ -1,0 +1,3 @@
+[submodule "goserver"]
+	path = goserver
+	url = https://github.com/nekrasovdmytro/goserver.git
