@@ -3,6 +3,7 @@ package main
 import (
 	"goserver-usage/src/github.com/nekrasovdmytro/goserver"
 	"net/http"
+	"goserver-usage/src/github.com/nekrasovdmytro/goconfig"
 )
 
 func main() {
@@ -26,7 +27,19 @@ func main() {
 		goserver.HandelJsonResponse(w, http.StatusOK, message)
 	}})
 
-	server := goserver.Server{routerCollector}
+	configurator := goconfig.Configurator{}
+	configurator.SetLoader(goconfig.JsonConfigLoader{})
+	configurator.Load("config/goserver.json")
+
+	configData := configurator.GetData()
+	configDataMap := configData.(map[string]string)
+
+	config := goserver.ServerConfig{
+		Host: configDataMap["Host"],
+		Port: configDataMap["Port"],
+	}
+
+	server := goserver.Server{RouterCollector : routerCollector, ServerConfig: config}
 
 	error := server.Run()
 

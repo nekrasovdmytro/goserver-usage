@@ -1,3 +1,10 @@
 [submodule "goserver"]
 	path = src/github.com/nekrasovdmytro/goserver
 	url = https://github.com/nekrasovdmytro/goserver.git
+
+[submodule "goconfig"]
+	path = src/github.com/nekrasovdmytro/goconfig
+	url = https://github.com/nekrasovdmytro/goconfig.git
+[submodule "src/github.com/nekrasovdmytro/goconfig"]
+	path = src/github.com/nekrasovdmytro/goconfig
+	url = https://github.com/nekrasovdmytro/goconfig.git
