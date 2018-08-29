@@ -13,12 +13,27 @@ func main() {
 		Routers: routers,
 	}
 
-	routerCollector.AddRouter(goserver.Router{Method: http.MethodGet, Path: "/", Func: func(w http.ResponseWriter, r *http.Request) {
+	routerCollector.AddRouter(goserver.Router{Method: http.MethodGet, Path: "/this/1/", Func: func(w http.ResponseWriter, r *http.Request) {
 		data := make(map[string]string)
 
 		data["element-1"] = "value-1"
 
-		message := goserver.JsonMessage{
+		message := goserver.ServerJsonMessage{
+			Code: 0,
+			Message: "",
+			Data: data,
+		}
+
+		goserver.HandelJsonResponse(w, http.StatusOK, message)
+	}})
+
+	routerCollector.AddRouter(goserver.Router{Method: http.MethodGet, Path: "/this/2/", Func: func(w http.ResponseWriter, r *http.Request) {
+		data := make(map[string]interface{})
+
+		data["URL"] = r.URL
+		data["RequestURI"] = r.RequestURI
+
+		message := goserver.ServerJsonMessage{
 			Code: 0,
 			Message: "",
 			Data: data,
